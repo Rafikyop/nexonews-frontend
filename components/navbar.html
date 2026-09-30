@@ -19,7 +19,25 @@
     </nav>
 
     <div class="navbar__actions">
-      <a href="admin.html" class="navbar__login"> Iniciar sesión </a>
+      <a
+        id="admin-create-link"
+        href="crear-noticia.html"
+        class="navbar__admin-link hidden"
+      >
+        + Crear noticia
+      </a>
+
+      <span id="admin-status" class="navbar__admin-status hidden">
+        Administrador
+      </span>
+
+      <button id="logout-button" class="navbar__logout hidden" type="button">
+        Cerrar sesión
+      </button>
+
+      <a id="login-link" href="admin.html" class="navbar__login">
+        Iniciar sesión
+      </a>
 
       <button
         id="mobile-menu-button"

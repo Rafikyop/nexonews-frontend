@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>NexoNews | Gestión de noticia</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/global.css" />
+
+    <link rel="stylesheet" href="css/components.css" />
+
+    <link rel="stylesheet" href="css/pages.css" />
+  </head>
+
+  <body>
+    <div id="navbar"></div>
+
+    <main>
+      <section class="page-header">
+        <div class="container">
+          <span class="page-header__eyebrow"> Administración </span>
+
+          <h1 id="admin-form-title" class="page-header__title">
+            Crear nueva noticia
+          </h1>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <form id="news-admin-form" class="contact-card admin-news-form">
+            <div class="form-group">
+              <label for="news-title"> Título * </label>
+
+              <input id="news-title" type="text" required />
+            </div>
+
+            <div class="form-group">
+              <label for="news-category"> Categoría * </label>
+
+              <select id="news-category" required>
+                <option value="">Seleccionar</option>
+
+                <option value="Tecnología">Tecnología</option>
+
+                <option value="Educación">Educación</option>
+
+                <option value="Turismo">Turismo</option>
+
+                <option value="Negocios">Negocios</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="news-image"> URL de imagen * </label>
+
+              <input id="news-image" type="url" required />
+            </div>
+
+            <div class="form-group">
+              <label for="news-description"> Descripción * </label>
+
+              <textarea id="news-description" rows="4" required></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="news-content"> Contenido * </label>
+
+              <textarea id="news-content" rows="10" required></textarea>
+            </div>
+
+            <button type="submit" class="button button--primary form-submit">
+              Guardar noticia
+            </button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <div id="footer"></div>
+
+    <script src="js/services/auth.service.js"></script>
+
+    <script src="js/services/noticias.service.js"></script>
+
+    <script src="js/components/navbar.js"></script>
+
+    <script src="js/components/footer.js"></script>
+
+    <script src="js/pages/crear-noticia.js"></script>
+  </body>
+</html>

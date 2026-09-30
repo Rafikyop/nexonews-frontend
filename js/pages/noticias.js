@@ -114,6 +114,33 @@ function renderizarNoticias() {
     .map((noticia) => NewsCard.crear(noticia))
     .join("");
   NewsCard.configurarFavoritos(container);
+  configurarEliminacionAdmin(container);
+}
+
+function configurarEliminacionAdmin(container) {
+  if (typeof AuthService === "undefined" || !AuthService.esAdministrador()) {
+    return;
+  }
+
+  const botones = container.querySelectorAll("[data-delete-id]");
+
+  botones.forEach((boton) => {
+    boton.addEventListener("click", async () => {
+      const id = boton.dataset.deleteId;
+
+      const confirmar = confirm("¿Seguro que deseas eliminar esta noticia?");
+
+      if (!confirmar) {
+        return;
+      }
+
+      await NoticiasService.eliminarNoticia(id);
+
+      noticias = await NoticiasService.obtenerNoticias();
+
+      renderizarNoticias();
+    });
+  });
 }
 
 document.addEventListener("DOMContentLoaded", inicializarPaginaNoticias);
