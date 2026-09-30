@@ -22,6 +22,7 @@ const NewsCard = (() => {
 
   function crear(noticia) {
     const categoriaClass = obtenerClaseCategoria(noticia.categoria);
+    const esFavorito = StorageService.esFavorito(noticia.id);
 
     return `
             <article
@@ -39,12 +40,12 @@ const NewsCard = (() => {
                     >
 
                     <button
-                        class="news-card__favorite"
+                        class="news-card__favorite ${esFavorito ? "active" : ""}"
                         type="button"
                         data-favorite-id="${noticia.id}"
-                        aria-label="Agregar a favoritos"
+                        aria-label="${esFavorito ? "Quitar de favoritos" : "Agregar a favoritos"}"
                     >
-                        ♡
+                        ${esFavorito ? "♥" : "♡"}
                     </button>
 
                 </div>
@@ -92,8 +93,30 @@ const NewsCard = (() => {
             </article>
         `;
   }
+  function configurarFavoritos(container = document) {
+    const botones = container.querySelectorAll("[data-favorite-id]");
 
+    botones.forEach((boton) => {
+      boton.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        const id = boton.dataset.favoriteId;
+
+        const activo = StorageService.alternarFavorito(id);
+
+        boton.classList.toggle("active", activo);
+
+        boton.textContent = activo ? "♥" : "♡";
+
+        boton.setAttribute(
+          "aria-label",
+          activo ? "Quitar de favoritos" : "Agregar a favoritos",
+        );
+      });
+    });
+  }
   return {
     crear,
+    configurarFavoritos,
   };
 })();

@@ -8,17 +8,17 @@ async function cargarNoticiasDestacadas() {
   if (noticias.length === 0) {
     container.innerHTML = `
             <p>
-                No hay noticias destacadas
-                disponibles.
+                No hay noticias destacadas disponibles.
             </p>
         `;
-
     return;
   }
 
   container.innerHTML = noticias
     .map((noticia) => NewsCard.crear(noticia))
     .join("");
+
+  NewsCard.configurarFavoritos(container);
 }
 
 document.addEventListener("DOMContentLoaded", cargarNoticiasDestacadas);
