@@ -2,45 +2,40 @@
 
 NexoNews es una aplicación web tipo periódico digital desarrollada como proyecto académico para la asignatura FrontEnd.
 
-La aplicación permite consultar noticias relacionadas con tecnología, educación, turismo y negocios mediante una interfaz moderna, organizada y adaptable a diferentes dispositivos.
+La aplicación permite consultar noticias de tecnología, educación, turismo y negocios, visualizar su contenido completo, realizar búsquedas, guardar favoritos y gestionar noticias desde un módulo administrativo.
 
 ## Objetivo
 
-Desarrollar progresivamente una aplicación web funcional aplicando HTML, CSS y JavaScript, incorporando posteriormente fundamentos de Angular.
+Desarrollar progresivamente una aplicación web funcional aplicando HTML, CSS y JavaScript, con una estructura preparada para incorporar fundamentos de Angular en la etapa final del proyecto.
 
-El proyecto se desarrolla en tres etapas:
+El proyecto se divide en tres etapas:
 
-- Entrega 1: diseño y maquetación de la aplicación.
+- Entrega 1: diseño y maquetación.
 - Entrega 2: prototipo funcional con HTML, CSS y JavaScript.
-- Entrega 3: aplicación final con implementación básica en Angular.
+- Entrega 3: implementación básica con Angular y despliegue web.
 
-## Estado actual
+## Estado del proyecto
 
-Actualmente el proyecto se encuentra en desarrollo para la Entrega 2.
+Actualmente NexoNews corresponde a la **Entrega 2** y cuenta con un prototipo funcional.
 
-Funcionalidades implementadas hasta el momento:
+### Funcionalidades implementadas
 
-- Estructura inicial del proyecto.
-- Diseño del Home basado en los mockups realizados en Figma.
-- Navbar y footer reutilizables mediante componentes HTML.
-- Estilos globales organizados por responsabilidad.
-- Fuente de datos local mediante JSON.
-- Servicio JavaScript para consultar noticias.
-- Renderizado dinámico de noticias destacadas.
-- Cards de noticias generadas a partir de datos dinámicos.
-- Diseño responsive básico.
-
-## Próximas funcionalidades
-
+- Home basado en los mockups realizados en Figma.
+- Navbar y footer reutilizables.
+- Carga de noticias desde un archivo JSON.
+- Renderizado dinámico de noticias.
 - Listado completo de noticias.
 - Filtros por categoría.
-- Buscador de noticias.
-- Vista de detalle.
-- Gestión de favoritos mediante localStorage.
+- Buscador.
+- Vista de detalle mediante parámetros en la URL.
+- Sistema de favoritos con `localStorage`.
+- Persistencia de favoritos al recargar la aplicación.
 - Formulario de contacto con validaciones.
-- Gestión administrativa de noticias.
-- Operaciones básicas CRUD.
-- Preparación para migración a Angular.
+- Inicio de sesión administrativo simulado.
+- Creación, edición y eliminación de noticias.
+- Persistencia del CRUD mediante `localStorage`.
+- Interfaz diferenciada para usuario y administrador.
+- Diseño responsive básico.
 
 ## Tecnologías
 
@@ -51,14 +46,6 @@ Funcionalidades implementadas hasta el momento:
 - LocalStorage
 - Git
 - GitHub
-
-En la entrega final se incorporará:
-
-- Angular
-- Componentes
-- Binding
-- Routing
-- Despliegue web
 
 ## Estructura del proyecto
 
@@ -83,25 +70,30 @@ nexonews/
 │   ├── components.css
 │   └── pages.css
 │
+├── data/
+│   └── noticias.json
+│
 ├── js/
 │   ├── app.js
-│   ├── services/
-│   │   ├── noticias.service.js
-│   │   └── storage.service.js
+│   │
 │   ├── components/
 │   │   ├── navbar.js
 │   │   ├── footer.js
 │   │   └── news-card.js
+│   │
+│   ├── services/
+│   │   ├── auth.service.js
+│   │   ├── noticias.service.js
+│   │   └── storage.service.js
+│   │
 │   └── pages/
 │       ├── home.js
 │       ├── noticias.js
 │       ├── detalle.js
 │       ├── favoritos.js
 │       ├── contacto.js
-│       └── admin.js
-│
-├── data/
-│   └── noticias.json
+│       ├── admin.js
+│       └── crear-noticia.js
 │
 └── assets/
     └── images/
