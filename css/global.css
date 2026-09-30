@@ -1,0 +1,258 @@
+:root {
+  --color-navy: #0d1b2a;
+  --color-navy-light: #1a2e45;
+  --color-blue: #1e6fff;
+  --color-blue-dark: #1558cc;
+  --color-blue-light: #e8f0fe;
+
+  --color-white: #ffffff;
+  --color-surface: #f8fafc;
+  --color-border: #e2e8f0;
+
+  --color-text: #0d1b2a;
+  --color-muted: #718096;
+  --color-slate: #4a5568;
+
+  --color-green: #059669;
+  --color-green-light: #d1fae5;
+
+  --color-amber: #d97706;
+  --color-amber-light: #fef3c7;
+
+  --color-purple: #7c3aed;
+  --color-purple-light: #ede9fe;
+
+  --color-danger: #dc2626;
+
+  --font-title: "Poppins", sans-serif;
+  --font-body: "Inter", sans-serif;
+
+  --container-width: 1200px;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+
+  --shadow-sm: 0 2px 8px rgba(13, 27, 42, 0.08);
+  --shadow-md: 0 8px 24px rgba(13, 27, 42, 0.1);
+}
+
+/*RESET*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-white);
+  color: var(--color-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+/*CONTENEDOR GENERAL*/
+
+.container {
+  width: min(100% - 40px, var(--container-width));
+  margin-inline: auto;
+}
+
+/*SECCIONES*/
+
+.section {
+  padding: 80px 0;
+}
+
+.section--light {
+  background-color: var(--color-surface);
+}
+
+/*ENCABEZADOS DE SECCION*/
+
+.section-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.section-header--center {
+  justify-content: center;
+  text-align: center;
+}
+
+.section-header__eyebrow {
+  display: block;
+  margin-bottom: 8px;
+
+  color: var(--color-blue);
+
+  font-size: 0.75rem;
+  font-weight: 700;
+
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.section-header__title {
+  font-family: var(--font-title);
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  line-height: 1.15;
+}
+
+.section-header__description {
+  margin-top: 12px;
+  color: var(--color-muted);
+}
+
+/*BOTONES*/
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 44px;
+
+  padding: 12px 22px;
+
+  border: 1px solid transparent;
+  border-radius: 10px;
+
+  font-weight: 700;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+}
+
+.button--primary {
+  background-color: var(--color-blue);
+  color: var(--color-white);
+}
+
+.button--primary:hover {
+  background-color: var(--color-blue-dark);
+}
+
+.button--white {
+  background-color: var(--color-white);
+  color: var(--color-navy);
+}
+
+.button--outline-white {
+  border-color: rgba(255, 255, 255, 0.5);
+  color: var(--color-white);
+  background-color: transparent;
+}
+
+.button--outline-white:hover {
+  border-color: var(--color-white);
+}
+
+/*LINKS*/
+
+.text-link {
+  color: var(--color-blue);
+  font-weight: 700;
+}
+
+.text-link:hover {
+  text-decoration: underline;
+}
+
+/*BADGES DE CATEGORIA*/
+
+.category-badge {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 6px 10px;
+
+  border-radius: 999px;
+
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.category-badge--technology {
+  background-color: var(--color-blue-light);
+  color: var(--color-blue);
+}
+
+.category-badge--education {
+  background-color: var(--color-green-light);
+  color: var(--color-green);
+}
+
+.category-badge--tourism {
+  background-color: var(--color-amber-light);
+  color: var(--color-amber);
+}
+
+.category-badge--business {
+  background-color: var(--color-purple-light);
+  color: var(--color-purple);
+}
+
+/*UTILIDADES*/
+
+.hidden {
+  display: none !important;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/*RESPONSIVE BASE*/
+
+@media (max-width: 768px) {
+  .container {
+    width: min(100% - 28px, var(--container-width));
+  }
+
+  .section {
+    padding: 56px 0;
+  }
+
+  .section-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,99 @@
+const NewsCard = (() => {
+  function obtenerClaseCategoria(categoria) {
+    const clases = {
+      Tecnología: "category-badge--technology",
+      Educación: "category-badge--education",
+      Turismo: "category-badge--tourism",
+      Negocios: "category-badge--business",
+    };
+
+    return clases[categoria] || "";
+  }
+
+  function formatearFecha(fecha) {
+    const date = new Date(`${fecha}T00:00:00`);
+
+    return new Intl.DateTimeFormat("es-CO", {
+      day: "numeric",
+      month: "short",
+      year: "numeric",
+    }).format(date);
+  }
+
+  function crear(noticia) {
+    const categoriaClass = obtenerClaseCategoria(noticia.categoria);
+
+    return `
+            <article
+                class="news-card"
+                data-id="${noticia.id}"
+            >
+
+                <div class="news-card__image-wrapper">
+
+                    <img
+                        src="${noticia.imagen}"
+                        alt="${noticia.titulo}"
+                        class="news-card__image"
+                        loading="lazy"
+                    >
+
+                    <button
+                        class="news-card__favorite"
+                        type="button"
+                        data-favorite-id="${noticia.id}"
+                        aria-label="Agregar a favoritos"
+                    >
+                        ♡
+                    </button>
+
+                </div>
+
+                <div class="news-card__content">
+
+                    <span
+                        class="
+                            category-badge
+                            ${categoriaClass}
+                        "
+                    >
+                        ${noticia.categoria}
+                    </span>
+
+                    <h3 class="news-card__title">
+                        ${noticia.titulo}
+                    </h3>
+
+                    <p class="news-card__description">
+                        ${noticia.descripcion}
+                    </p>
+
+                    <div class="news-card__meta">
+
+                        <span>
+                            ${noticia.autor}
+                        </span>
+
+                        <span>
+                            ${formatearFecha(noticia.fecha)}
+                        </span>
+
+                    </div>
+
+                    <a
+                        href="detalle.html?id=${noticia.id}"
+                        class="news-card__button"
+                    >
+                        Leer noticia completa →
+                    </a>
+
+                </div>
+
+            </article>
+        `;
+  }
+
+  return {
+    crear,
+  };
+})();

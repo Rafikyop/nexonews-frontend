@@ -1,0 +1,19 @@
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
+
+# Logs
+*.log
+
+# Node / Angular - para la Entrega 3
+node_modules/
+dist/
+.angular/
+.cache/
+
+# Variables de entorno
+.env
+.env.*
