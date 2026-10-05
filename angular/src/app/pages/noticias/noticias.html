@@ -1,1 +1,83 @@
-<h1>Noticias</h1>
+<section class="page-header">
+  <div class="container">
+    <span class="page-header__eyebrow"> NexoNews </span>
+
+    <h1 class="page-header__title">Explora nuestras noticias</h1>
+
+    <p class="page-header__description">
+      Encuentra información de tecnología, educación, turismo y negocios.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="news-toolbar">
+      <div class="news-filters">
+        <button
+          class="filter-button"
+          [class.active]="categoriaActiva() === 'Todas'"
+          (click)="seleccionarCategoria('Todas')"
+        >
+          Todas
+        </button>
+
+        <button
+          class="filter-button"
+          [class.active]="categoriaActiva() === 'Tecnología'"
+          (click)="seleccionarCategoria('Tecnología')"
+        >
+          Tecnología
+        </button>
+
+        <button
+          class="filter-button"
+          [class.active]="categoriaActiva() === 'Educación'"
+          (click)="seleccionarCategoria('Educación')"
+        >
+          Educación
+        </button>
+
+        <button
+          class="filter-button"
+          [class.active]="categoriaActiva() === 'Turismo'"
+          (click)="seleccionarCategoria('Turismo')"
+        >
+          Turismo
+        </button>
+
+        <button
+          class="filter-button"
+          [class.active]="categoriaActiva() === 'Negocios'"
+          (click)="seleccionarCategoria('Negocios')"
+        >
+          Negocios
+        </button>
+      </div>
+
+      <div class="news-search">
+        <input type="search" placeholder="Buscar noticias..." (input)="buscarNoticias($event)" />
+      </div>
+    </div>
+
+    <div class="news-results-info">
+      {{ noticiasFiltradas().length }}
+
+      {{ noticiasFiltradas().length === 1 ? 'noticia encontrada' : 'noticias encontradas' }}
+    </div>
+
+    @if (noticiasFiltradas().length > 0) {
+      <div class="news-grid">
+        @for (noticia of noticiasFiltradas(); track noticia.id) {
+          <app-news-card [noticia]="noticia" />
+        }
+      </div>
+    } @else {
+      <div class="empty-state">
+        <h2>No encontramos noticias</h2>
+
+        <p>Intenta cambiar la categoría o el texto de búsqueda.</p>
+      </div>
+    }
+  </div>
+</section>
