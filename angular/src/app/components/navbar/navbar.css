@@ -1,0 +1,137 @@
+/*NAVBAR*/
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  background-color: var(--color-white);
+
+  border-bottom: 1px solid var(--color-border);
+}
+
+.navbar__content {
+  min-height: 72px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 30px;
+}
+
+.navbar__brand {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 9px;
+}
+
+.navbar__logo {
+  width: 34px;
+  height: 34px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 8px;
+
+  background-color: var(--color-blue);
+  color: var(--color-white);
+
+  font-family: var(--font-title);
+  font-weight: 700;
+}
+
+.navbar__name {
+  font-family: var(--font-title);
+  font-size: 1.25rem;
+  font-weight: 700;
+
+  color: var(--color-navy);
+}
+
+.navbar__name span {
+  color: var(--color-blue);
+}
+
+.navbar__nav {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+}
+
+.navbar__nav a {
+  padding: 9px 13px;
+
+  border-radius: 8px;
+
+  color: var(--color-slate);
+
+  font-size: 0.92rem;
+  font-weight: 600;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.navbar__nav a:hover,
+.navbar__nav a.active {
+  background-color: var(--color-blue-light);
+  color: var(--color-blue);
+}
+
+.navbar__actions {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+}
+
+.navbar__login {
+  color: var(--color-blue);
+
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.navbar__menu-button {
+  display: none;
+
+  padding: 7px 10px;
+
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+
+  background-color: var(--color-white);
+  color: var(--color-navy);
+
+  font-size: 1.25rem;
+}
+
+.navbar__mobile-menu {
+  display: none;
+
+  padding: 12px 20px 20px;
+
+  background-color: var(--color-white);
+
+  border-top: 1px solid var(--color-border);
+}
+
+.navbar__mobile-menu a {
+  display: block;
+
+  padding: 10px 0;
+
+  color: var(--color-slate);
+
+  font-weight: 600;
+}
+
+.navbar__mobile-menu.open {
+  display: block;
+}

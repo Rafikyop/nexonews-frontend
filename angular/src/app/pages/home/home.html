@@ -1,1 +1,128 @@
-<h1>Home NexoNews</h1>
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero__content">
+    <div class="hero__text">
+      <span class="category-badge category-badge--technology"> Tecnología </span>
+
+      <h1 class="hero__title">La inteligencia artificial redefine la educación global en 2026</h1>
+
+      <p class="hero__description">
+        Las nuevas herramientas de inteligencia artificial están transformando la forma en que
+        estudiantes y docentes interactúan con el conocimiento.
+      </p>
+
+      <div class="hero__meta">
+        <span>15 Sep 2026</span>
+        <span>•</span>
+        <span>Elena Martínez</span>
+      </div>
+
+      <a [routerLink]="['/noticia', 1]" class="button button--primary"> Leer noticia completa </a>
+    </div>
+
+    <div class="hero__image-wrapper">
+      <img
+        src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1200&h=680&fit=crop&auto=format"
+        alt="Inteligencia artificial"
+        class="hero__image"
+      />
+    </div>
+  </div>
+</section>
+
+<!-- DESTACADAS -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <span class="section-header__eyebrow"> Actualidad </span>
+
+        <h2>Noticias destacadas</h2>
+      </div>
+
+      <a routerLink="/noticias" class="text-link"> Ver todas → </a>
+    </div>
+
+    <div class="news-grid">
+      @for (noticia of noticiasDestacadas; track noticia.id) {
+        <app-news-card [noticia]="noticia" />
+      }
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORÍAS -->
+<section class="section categories-section">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <span class="section-header__eyebrow"> Explora </span>
+
+        <h2>Categorías</h2>
+      </div>
+    </div>
+
+    <div class="categories-grid">
+      <a
+        routerLink="/noticias"
+        [queryParams]="{
+          categoria: 'Tecnología',
+        }"
+        class="category-card"
+      >
+        <h3>Tecnología</h3>
+        <p>Innovación, inteligencia artificial y nuevas tendencias.</p>
+      </a>
+
+      <a
+        routerLink="/noticias"
+        [queryParams]="{
+          categoria: 'Educación',
+        }"
+        class="category-card"
+      >
+        <h3>Educación</h3>
+        <p>Aprendizaje, universidades y transformación educativa.</p>
+      </a>
+
+      <a
+        routerLink="/noticias"
+        [queryParams]="{
+          categoria: 'Turismo',
+        }"
+        class="category-card"
+      >
+        <h3>Turismo</h3>
+        <p>Destinos, tendencias y experiencias alrededor del mundo.</p>
+      </a>
+
+      <a
+        routerLink="/noticias"
+        [queryParams]="{
+          categoria: 'Negocios',
+        }"
+        class="category-card"
+      >
+        <h3>Negocios</h3>
+        <p>Economía, emprendimiento y empresas.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="home-cta">
+  <div class="container home-cta__content">
+    <div>
+      <h2>Mantente informado con NexoNews</h2>
+
+      <p>Explora las noticias más relevantes de nuestras categorías.</p>
+    </div>
+
+    <div class="home-cta__actions">
+      <a routerLink="/noticias" class="button button--primary"> Explorar noticias </a>
+
+      <a routerLink="/contacto" class="button button--secondary"> Contáctanos </a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,138 @@
+[
+  {
+    "id": 1,
+    "categoria": "Tecnología",
+    "titulo": "La inteligencia artificial redefine la educación global en 2026",
+    "descripcion": "Universidades de todo el mundo adoptan modelos de IA adaptativa que personalizan el aprendizaje para cada estudiante, reduciendo la deserción escolar.",
+    "imagen": "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1200&h=680&fit=crop&auto=format",
+    "fecha": "2026-09-15",
+    "autor": "Elena Martínez",
+    "tiempoLectura": "5 min",
+    "vistas": 12400,
+    "destacada": true,
+    "contenido": [
+      "La inteligencia artificial ha dejado de ser una promesa del futuro para convertirse en una herramienta presente en instituciones educativas de diferentes países.",
+      "Los nuevos sistemas adaptativos analizan el ritmo de aprendizaje y las necesidades particulares de cada estudiante para ofrecer experiencias educativas personalizadas.",
+      "América Latina también ha aumentado la adopción de estas tecnologías, especialmente en proyectos relacionados con educación digital y acceso a herramientas tecnológicas."
+    ]
+  },
+  {
+    "id": 2,
+    "categoria": "Negocios",
+    "titulo": "Las startups latinoamericanas captan más de $4.200M en el primer semestre",
+    "descripcion": "El ecosistema emprendedor de América Latina registra uno de sus mejores periodos, liderado por fintech, tecnología y logística sostenible.",
+    "imagen": "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=680&h=420&fit=crop&auto=format",
+    "fecha": "2026-09-14",
+    "autor": "Rodrigo Salcedo",
+    "tiempoLectura": "4 min",
+    "vistas": 9800,
+    "destacada": true,
+    "contenido": [
+      "Las empresas emergentes latinoamericanas continúan aumentando su participación dentro del ecosistema tecnológico internacional.",
+      "Los sectores de tecnología financiera, logística y comercio electrónico concentran una parte importante de las nuevas inversiones.",
+      "Expertos consideran que la región mantiene oportunidades importantes para nuevos emprendimientos durante los próximos años."
+    ]
+  },
+  {
+    "id": 3,
+    "categoria": "Turismo",
+    "titulo": "Patagonia registra un récord de visitantes internacionales este invierno",
+    "descripcion": "El destino argentino-chileno supera las expectativas con rutas de ecoturismo que combinan aventura y conservación medioambiental.",
+    "imagen": "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=680&h=420&fit=crop&auto=format",
+    "fecha": "2026-09-13",
+    "autor": "Sofía Reyes",
+    "tiempoLectura": "3 min",
+    "vistas": 7200,
+    "destacada": true,
+    "contenido": [
+      "La Patagonia continúa consolidándose como uno de los destinos naturales más importantes de América Latina.",
+      "Las nuevas rutas turísticas buscan combinar actividades de aventura con iniciativas de protección ambiental.",
+      "Autoridades locales esperan que el crecimiento turístico continúe acompañado de políticas de sostenibilidad."
+    ]
+  },
+  {
+    "id": 4,
+    "categoria": "Educación",
+    "titulo": "México lanza el mayor programa de becas digitales de su historia",
+    "descripcion": "El programa busca ampliar la formación tecnológica para jóvenes y estudiantes de comunidades rurales.",
+    "imagen": "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=680&h=420&fit=crop&auto=format",
+    "fecha": "2026-09-12",
+    "autor": "Marco Vidal",
+    "tiempoLectura": "6 min",
+    "vistas": 5600,
+    "destacada": false,
+    "contenido": [
+      "El programa de becas digitales busca reducir las diferencias de acceso a formación tecnológica.",
+      "Los beneficiarios podrán participar en programas relacionados con programación, herramientas digitales y competencias tecnológicas.",
+      "La iniciativa tendrá especial presencia en comunidades rurales y regiones con menor acceso a educación especializada."
+    ]
+  },
+  {
+    "id": 5,
+    "categoria": "Tecnología",
+    "titulo": "Apple presenta sus gafas de realidad mixta para el mercado profesional",
+    "descripcion": "El nuevo dispositivo incorpora herramientas dirigidas a productividad, colaboración remota y experiencias inmersivas.",
+    "imagen": "https://images.unsplash.com/photo-1617802690992-15d93263d3a9?w=680&h=420&fit=crop&auto=format",
+    "fecha": "2026-09-11",
+    "autor": "Andrea Fuentes",
+    "tiempoLectura": "4 min",
+    "vistas": 14100,
+    "destacada": false,
+    "contenido": [
+      "La realidad mixta continúa ganando terreno en ambientes empresariales y profesionales.",
+      "Las nuevas herramientas permiten trabajar con espacios virtuales y aplicaciones de productividad mediante interfaces inmersivas.",
+      "El mercado empresarial podría convertirse en uno de los principales sectores de crecimiento para este tipo de dispositivos."
+    ]
+  },
+  {
+    "id": 6,
+    "categoria": "Negocios",
+    "titulo": "Banco Central eleva tasas por tercera vez consecutiva ante inflación regional",
+    "descripcion": "La medida busca controlar el aumento de precios mientras analistas estudian sus efectos sobre el crédito y el consumo.",
+    "imagen": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=680&h=420&fit=crop&auto=format",
+    "fecha": "2026-09-10",
+    "autor": "Camila Ortega",
+    "tiempoLectura": "5 min",
+    "vistas": 8300,
+    "destacada": false,
+    "contenido": [
+      "Las autoridades monetarias anunciaron un nuevo incremento de las tasas de interés como respuesta al comportamiento reciente de los precios.",
+      "La decisión podría afectar diferentes productos financieros, incluyendo créditos de consumo e hipotecarios.",
+      "Analistas seguirán observando los indicadores económicos para determinar el impacto de las medidas."
+    ]
+  },
+  {
+    "id": 7,
+    "categoria": "Turismo",
+    "titulo": "El Caribe registra su temporada turística más exitosa de la última década",
+    "descripcion": "La región consolida su recuperación turística e impulsa nuevas alternativas relacionadas con turismo sostenible.",
+    "imagen": "https://images.unsplash.com/photo-1513553404607-988bf2703777?w=680&h=420&fit=crop&auto=format",
+    "fecha": "2026-09-09",
+    "autor": "Diego Herrera",
+    "tiempoLectura": "3 min",
+    "vistas": 6100,
+    "destacada": false,
+    "contenido": [
+      "Los principales destinos del Caribe reportaron un crecimiento importante en la llegada de visitantes internacionales.",
+      "Parte del crecimiento está relacionado con nuevas rutas aéreas y ofertas de turismo sostenible.",
+      "Los gobiernos de la región buscan mantener el crecimiento sin afectar los ecosistemas naturales."
+    ]
+  },
+  {
+    "id": 8,
+    "categoria": "Educación",
+    "titulo": "Universidades latinoamericanas fortalecen sus programas de ciencia de datos",
+    "descripcion": "Instituciones de educación superior amplían su oferta académica ante el crecimiento de la demanda de profesionales tecnológicos.",
+    "imagen": "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=680&h=420&fit=crop&auto=format",
+    "fecha": "2026-09-08",
+    "autor": "Laura Gómez",
+    "tiempoLectura": "5 min",
+    "vistas": 7500,
+    "destacada": false,
+    "contenido": [
+      "La ciencia de datos se ha convertido en una de las áreas de mayor interés dentro de las universidades latinoamericanas.",
+      "Las instituciones están creando programas relacionados con inteligencia artificial, análisis de información y aprendizaje automático.",
+      "El objetivo es responder a una demanda laboral creciente en sectores tecnológicos y empresariales."
+    ]
+  }
+]

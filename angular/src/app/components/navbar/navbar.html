@@ -1,15 +1,52 @@
-<nav>
-  <a routerLink="/"> NexoNews </a>
+<header class="navbar">
+  <div class="container navbar__content">
+    <a routerLink="/" class="navbar__brand">
+      <span class="navbar__logo">N</span>
 
-  <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-    Inicio
-  </a>
+      <span class="navbar__name"> Nexo<span>News</span> </span>
+    </a>
 
-  <a routerLink="/noticias" routerLinkActive="active"> Noticias </a>
+    <nav class="navbar__nav">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        Inicio
+      </a>
 
-  <a routerLink="/favoritos" routerLinkActive="active"> Favoritos </a>
+      <a routerLink="/noticias" routerLinkActive="active"> Noticias </a>
 
-  <a routerLink="/contacto" routerLinkActive="active"> Contacto </a>
+      <a routerLink="/favoritos" routerLinkActive="active"> Favoritos </a>
 
-  <a routerLink="/admin" routerLinkActive="active"> Iniciar sesión </a>
-</nav>
+      <a routerLink="/contacto" routerLinkActive="active"> Contacto </a>
+    </nav>
+
+    <div class="navbar__actions">
+      <a id="admin-create-link" routerLink="/admin/noticia/nueva" class="navbar__admin-link hidden">
+        + Crear noticia
+      </a>
+
+      <span id="admin-status" class="navbar__admin-status hidden"> Administrador </span>
+
+      <button id="logout-button" class="navbar__logout hidden" type="button">Cerrar sesión</button>
+
+      <a id="login-link" routerLink="/admin" class="navbar__login"> Iniciar sesión </a>
+
+      <button
+        id="mobile-menu-button"
+        class="navbar__menu-button"
+        type="button"
+        aria-label="Abrir menú"
+      >
+        ☰
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="navbar__mobile-menu">
+    <a routerLink="/"> Inicio </a>
+
+    <a routerLink="/noticias"> Noticias </a>
+
+    <a routerLink="/favoritos"> Favoritos </a>
+
+    <a routerLink="/contacto"> Contacto </a>
+  </div>
+</header>
