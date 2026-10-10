@@ -61,14 +61,6 @@
   object-fit: cover;
 }
 
-/*HOME - NEWS GRID*/
-
-.news-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
 /*HOME - CATEGORÍAS*/
 
 .categories-grid {

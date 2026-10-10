@@ -6,6 +6,8 @@ import { DatePipe } from '@angular/common';
 
 import { Noticia } from '../../models/noticia.model';
 
+import { StorageService } from '../../services/storage';
+
 @Component({
   selector: 'app-news-card',
 
@@ -20,6 +22,12 @@ export class NewsCard {
     required: true,
   })
   noticia!: Noticia;
+
+  constructor(public storageService: StorageService) {}
+
+  alternarFavorito(): void {
+    this.storageService.alternarFavorito(this.noticia.id);
+  }
 
   obtenerClaseCategoria(): string {
     const clases: Record<string, string> = {

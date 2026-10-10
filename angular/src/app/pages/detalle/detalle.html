@@ -78,7 +78,18 @@
         <img [src]="noticiaActual.imagen" [alt]="noticiaActual.titulo" class="news-detail__image" />
 
         <div class="news-detail__actions">
-          <button class="news-detail__favorite" type="button">♡ Agregar a favoritos</button>
+          <button
+            class="news-detail__favorite"
+            [class.active]="storageService.esFavorito(noticiaActual.id)"
+            type="button"
+            (click)="alternarFavorito()"
+          >
+            {{
+              storageService.esFavorito(noticiaActual.id)
+                ? '♥ Quitar de favoritos'
+                : '♡ Agregar a favoritos'
+            }}
+          </button>
         </div>
 
         <div class="news-detail__content">

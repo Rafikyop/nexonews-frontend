@@ -1,1 +1,31 @@
-<p>favoritos works!</p>
+<section class="page-header">
+  <div class="container">
+    <span class="page-header__eyebrow"> NexoNews · Tu colección </span>
+
+    <h1 class="page-header__title">Mis noticias favoritas</h1>
+
+    <p class="page-header__description">
+      Consulta las noticias que has guardado para leer más tarde.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    @if (noticiasFavoritas().length > 0) {
+      <div class="news-grid">
+        @for (noticia of noticiasFavoritas(); track noticia.id) {
+          <app-news-card [noticia]="noticia" />
+        }
+      </div>
+    } @else {
+      <div class="empty-state">
+        <h2>Aún no tienes noticias favoritas</h2>
+
+        <p>Explora las noticias y guarda las que más te interesen.</p>
+
+        <a routerLink="/noticias" class="button button--primary"> Explorar noticias </a>
+      </div>
+    }
+  </div>
+</section>

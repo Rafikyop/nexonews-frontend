@@ -116,26 +116,3 @@
 
   font-size: 0.9rem;
 }
-
-/*EMPTY STATE*/
-
-.empty-state {
-  padding: 70px 20px;
-
-  text-align: center;
-
-  border: 1px dashed var(--color-border);
-  border-radius: var(--radius-md);
-
-  background-color: var(--color-surface);
-}
-
-.empty-state h2 {
-  font-family: var(--font-title);
-
-  margin-bottom: 8px;
-}
-
-.empty-state p {
-  color: var(--color-muted);
-}

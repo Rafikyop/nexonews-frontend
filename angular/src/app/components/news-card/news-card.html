@@ -2,7 +2,17 @@
   <div class="news-card__image-wrapper">
     <img [src]="noticia.imagen" [alt]="noticia.titulo" class="news-card__image" />
 
-    <button class="news-card__favorite" type="button" aria-label="Agregar a favoritos">♡</button>
+    <button
+      class="news-card__favorite"
+      [class.active]="storageService.esFavorito(noticia.id)"
+      type="button"
+      (click)="alternarFavorito()"
+      [attr.aria-label]="
+        storageService.esFavorito(noticia.id) ? 'Quitar de favoritos' : 'Agregar a favoritos'
+      "
+    >
+      {{ storageService.esFavorito(noticia.id) ? '♥' : '♡' }}
+    </button>
   </div>
 
   <div class="news-card__content">

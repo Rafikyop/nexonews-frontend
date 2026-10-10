@@ -6,6 +6,8 @@ import { NoticiasService } from '../../services/noticias';
 
 import { Noticia } from '../../models/noticia.model';
 
+import { StorageService } from '../../services/storage';
+
 @Component({
   selector: 'app-detalle',
 
@@ -24,7 +26,18 @@ export class Detalle implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private noticiasService: NoticiasService,
+    public storageService: StorageService,
   ) {}
+
+  alternarFavorito(): void {
+    const noticiaActual = this.noticia();
+
+    if (!noticiaActual) {
+      return;
+    }
+
+    this.storageService.alternarFavorito(noticiaActual.id);
+  }
 
   ngOnInit(): void {
     const idTexto = this.route.snapshot.paramMap.get('id');
