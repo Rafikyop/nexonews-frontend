@@ -1,1 +1,94 @@
-<p>detalle works!</p>
+<section class="section">
+  <div class="container">
+    @if (cargando()) {
+      <div class="detail-state">
+        <p>Cargando noticia...</p>
+      </div>
+    } @else if (noEncontrada()) {
+      <div class="not-found">
+        <h1>Noticia no encontrada</h1>
+
+        <p>La noticia que buscas no existe o ya no está disponible.</p>
+
+        <a routerLink="/noticias" class="button button--primary"> Volver a noticias </a>
+      </div>
+    } @else if (noticia(); as noticiaActual) {
+      <article class="news-detail">
+        <div class="news-detail__breadcrumb">
+          <a routerLink="/"> Inicio </a>
+
+          <span>/</span>
+
+          <a
+            routerLink="/noticias"
+            [queryParams]="{
+              categoria: noticiaActual.categoria,
+            }"
+          >
+            {{ noticiaActual.categoria }}
+          </a>
+
+          <span>/</span>
+
+          <span> Detalle </span>
+        </div>
+
+        <header class="news-detail__header">
+          <span
+            class="category-badge"
+            [class]="'category-badge ' + obtenerClaseCategoria(noticiaActual.categoria)"
+          >
+            {{ noticiaActual.categoria }}
+          </span>
+
+          <h1 class="news-detail__title">
+            {{ noticiaActual.titulo }}
+          </h1>
+
+          <p class="news-detail__description">
+            {{ noticiaActual.descripcion }}
+          </p>
+
+          <div class="news-detail__meta">
+            <span>
+              {{ noticiaActual.autor }}
+            </span>
+
+            <span>•</span>
+
+            <span>
+              {{ noticiaActual.fecha }}
+            </span>
+
+            <span>•</span>
+
+            <span>
+              {{ noticiaActual.tiempoLectura }}
+            </span>
+
+            <span>•</span>
+
+            <span>
+              {{ noticiaActual.vistas }}
+              vistas
+            </span>
+          </div>
+        </header>
+
+        <img [src]="noticiaActual.imagen" [alt]="noticiaActual.titulo" class="news-detail__image" />
+
+        <div class="news-detail__actions">
+          <button class="news-detail__favorite" type="button">♡ Agregar a favoritos</button>
+        </div>
+
+        <div class="news-detail__content">
+          @for (parrafo of noticiaActual.contenido; track $index) {
+            <p>
+              {{ parrafo }}
+            </p>
+          }
+        </div>
+      </article>
+    }
+  </div>
+</section>

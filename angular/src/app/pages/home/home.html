@@ -44,7 +44,7 @@
     </div>
 
     <div class="news-grid">
-      @for (noticia of noticiasDestacadas; track noticia.id) {
+      @for (noticia of noticiasDestacadas(); track noticia.id) {
         <app-news-card [noticia]="noticia" />
       }
     </div>

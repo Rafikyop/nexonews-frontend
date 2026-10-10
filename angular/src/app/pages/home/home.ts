@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 
 import { RouterLink } from '@angular/router';
 
@@ -14,22 +14,21 @@ import { NewsCard } from '../../components/news-card/news-card';
   imports: [RouterLink, NewsCard],
 
   templateUrl: './home.html',
-
   styleUrl: './home.css',
 })
 export class Home implements OnInit {
-  noticiasDestacadas: Noticia[] = [];
+  noticiasDestacadas = signal<Noticia[]>([]);
 
   constructor(private noticiasService: NoticiasService) {}
 
   ngOnInit(): void {
     this.noticiasService.obtenerDestacadas().subscribe({
       next: (noticias) => {
-        this.noticiasDestacadas = noticias;
+        this.noticiasDestacadas.set(noticias);
       },
 
       error: (error) => {
-        console.error('Error cargando noticias:', error);
+        console.error('Error cargando noticias destacadas:', error);
       },
     });
   }
