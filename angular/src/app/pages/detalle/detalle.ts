@@ -27,7 +27,9 @@ export class Detalle implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
+    const idTexto = this.route.snapshot.paramMap.get('id');
+
+    const id = Number(idTexto);
 
     if (!id) {
       this.noEncontrada.set(true);
@@ -38,19 +40,20 @@ export class Detalle implements OnInit {
 
     this.noticiasService.obtenerNoticiaPorId(id).subscribe({
       next: (noticia) => {
-        if (!noticia) {
-          this.noEncontrada.set(true);
-        } else {
+        if (noticia) {
           this.noticia.set(noticia);
+        } else {
+          this.noEncontrada.set(true);
         }
 
         this.cargando.set(false);
       },
 
       error: (error) => {
-        console.error('Error cargando la noticia:', error);
+        console.error('Error cargando noticia:', error);
 
         this.noEncontrada.set(true);
+
         this.cargando.set(false);
       },
     });
