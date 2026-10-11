@@ -1,1 +1,123 @@
-<p>contacto works!</p>
+<section class="page-header">
+  <div class="container">
+    <span class="page-header__eyebrow"> NexoNews </span>
+
+    <h1 class="page-header__title">Contáctanos</h1>
+
+    <p class="page-header__description">Envíanos tus preguntas, sugerencias o comentarios.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container contact-layout">
+    <div class="contact-info">
+      <span class="section-header__eyebrow"> Estamos para escucharte </span>
+
+      <h2>Hablemos</h2>
+
+      <p>
+        Si tienes una sugerencia, deseas reportar una corrección o quieres comunicarte con nuestro
+        equipo, completa el formulario.
+      </p>
+
+      <div class="contact-info__item">
+        <strong> Correo </strong>
+
+        <span> redaccion@nexonews.com </span>
+      </div>
+
+      <div class="contact-info__item">
+        <strong> Ubicación </strong>
+
+        <span> Medellín, Colombia </span>
+      </div>
+    </div>
+
+    <div class="contact-card">
+      <form [formGroup]="formulario" (ngSubmit)="enviarFormulario()" novalidate>
+        <div class="form-group">
+          <label for="nombre"> Nombre * </label>
+
+          <input id="nombre" type="text" formControlName="nombre" placeholder="Escribe tu nombre" />
+
+          @if (campoInvalido('nombre')) {
+            <small class="form-error">
+              @if (formulario.get('nombre')?.hasError('required')) {
+                Este campo es obligatorio.
+              } @else if (formulario.get('nombre')?.hasError('minlength')) {
+                El nombre debe tener al menos 3 caracteres.
+              }
+            </small>
+          }
+        </div>
+
+        <div class="form-group">
+          <label for="email"> Correo electrónico * </label>
+
+          <input id="email" type="email" formControlName="email" placeholder="correo@ejemplo.com" />
+
+          @if (campoInvalido('email')) {
+            <small class="form-error">
+              @if (formulario.get('email')?.hasError('required')) {
+                Este campo es obligatorio.
+              } @else if (formulario.get('email')?.hasError('email')) {
+                Ingresa un correo electrónico válido.
+              }
+            </small>
+          }
+        </div>
+
+        <div class="form-group">
+          <label for="asunto"> Asunto * </label>
+
+          <select id="asunto" formControlName="asunto">
+            <option value="">Selecciona un asunto</option>
+
+            <option value="general">Consulta general</option>
+
+            <option value="colaboracion">Propuesta de colaboración</option>
+
+            <option value="correccion">Corrección de noticia</option>
+
+            <option value="publicidad">Publicidad</option>
+
+            <option value="soporte">Soporte técnico</option>
+          </select>
+
+          @if (campoInvalido('asunto')) {
+            <small class="form-error"> Selecciona un asunto. </small>
+          }
+        </div>
+
+        <div class="form-group">
+          <label for="mensaje"> Mensaje * </label>
+
+          <textarea
+            id="mensaje"
+            rows="6"
+            formControlName="mensaje"
+            placeholder="Escribe tu mensaje"
+          ></textarea>
+
+          @if (campoInvalido('mensaje')) {
+            <small class="form-error">
+              @if (formulario.get('mensaje')?.hasError('required')) {
+                Este campo es obligatorio.
+              } @else if (formulario.get('mensaje')?.hasError('minlength')) {
+                El mensaje debe tener al menos 10 caracteres.
+              }
+            </small>
+          }
+        </div>
+
+        <button type="submit" class="button button--primary form-submit">Enviar mensaje</button>
+
+        @if (mensajeEnviado()) {
+          <div class="form-success">
+            Mensaje enviado correctamente. Nos pondremos en contacto contigo.
+          </div>
+        }
+      </form>
+    </div>
+  </div>
+</section>
