@@ -356,3 +356,45 @@ button {
 
   justify-content: center;
 }
+
+/*PAGE HEADER NOTICIAS*/
+
+.page-header {
+  padding: 72px 0;
+
+  background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-light) 100%);
+
+  color: var(--color-white);
+}
+
+.page-header__eyebrow {
+  display: block;
+
+  margin-bottom: 10px;
+
+  color: #60a5fa;
+
+  font-size: 0.75rem;
+  font-weight: 700;
+
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.page-header__title {
+  font-family: var(--font-title);
+
+  font-size: clamp(2.4rem, 5vw, 4rem);
+
+  line-height: 1.1;
+}
+
+.page-header__description {
+  margin-top: 14px;
+
+  max-width: 640px;
+
+  color: #cbd5e1;
+
+  font-size: 1rem;
+}
