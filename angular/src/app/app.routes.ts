@@ -6,6 +6,7 @@ import { Favoritos } from './pages/favoritos/favoritos';
 import { Contacto } from './pages/contacto/contacto';
 import { Admin } from './pages/admin/admin';
 import { NoticiaForm } from './pages/noticia-form/noticia-form';
+import { adminGuard } from './guards/admin-guard';
 
 export const routes: Routes = [
   {
@@ -42,11 +43,13 @@ export const routes: Routes = [
     path: 'admin/noticia/nueva',
     component: NoticiaForm,
     title: 'NexoNews | Crear noticia',
+    canActivate: [adminGuard],
   },
   {
     path: 'admin/noticia/:id/editar',
     component: NoticiaForm,
     title: 'NexoNews | Editar noticia',
+    canActivate: [adminGuard],
   },
 
   {
