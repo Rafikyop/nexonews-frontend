@@ -59,6 +59,14 @@ Actualmente NexoNews corresponde a la **Entrega 3** y cuenta con una aplicación
 - GitHub
 - Vercel
 
+## Despliegue
+
+La aplicación se encuentra desplegada en Vercel.
+
+URL pública:
+
+https://nexonews-frontend.vercel.app/
+
 ## Arquitectura general
 
 La aplicación está organizada mediante componentes, páginas, servicios, modelos y guards.
