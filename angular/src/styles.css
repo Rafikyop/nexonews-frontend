@@ -303,3 +303,56 @@ button {
 .empty-state p {
   color: var(--color-muted);
 }
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  color: var(--color-navy);
+
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+
+  padding: 12px 14px;
+
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+
+  background-color: var(--color-white);
+
+  color: var(--color-navy);
+
+  font-family: inherit;
+  font-size: 0.95rem;
+
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--color-blue);
+
+  box-shadow: 0 0 0 3px rgba(30, 111, 255, 0.12);
+}
+
+.form-submit {
+  width: 100%;
+
+  justify-content: center;
+}

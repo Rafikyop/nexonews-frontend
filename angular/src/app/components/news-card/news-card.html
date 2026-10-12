@@ -43,5 +43,15 @@
     <a [routerLink]="['/noticia', noticia.id]" class="news-card__read-more">
       Leer noticia completa →
     </a>
+
+    @if (authService.esAdmin()) {
+      <div class="news-card__admin-actions">
+        <button type="button" class="news-card__edit" (click)="editarNoticia()">Editar</button>
+
+        <button type="button" class="news-card__delete" (click)="eliminarNoticia()">
+          Eliminar
+        </button>
+      </div>
+    }
   </div>
 </article>
