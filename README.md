@@ -1,129 +1,100 @@
-# NexoNews
+## Integración Continua — Entrega 1: Docker
 
-NexoNews es una aplicación web tipo periódico digital desarrollada como proyecto académico para la asignatura FrontEnd.
+### Objetivo
 
-La aplicación permite consultar noticias de tecnología, educación, turismo y negocios, visualizar el contenido completo de cada noticia, realizar búsquedas, filtrar por categoría, guardar favoritos y administrar noticias mediante un módulo de gestión.
+Adaptar NexoNews para ejecutarse mediante contenedores Docker, utilizando una arquitectura de frontend y backend independientes que se comuniquen a través de una red interna.
 
-## Objetivo
+### Tecnologías utilizadas
 
-Desarrollar una aplicación web funcional aplicando conceptos de desarrollo FrontEnd y fundamentos de Angular, incluyendo componentes, routing, servicios, binding, formularios, persistencia local y organización modular del código.
+- **Angular:** aplicación frontend.
+- **Nginx:** servidor web y proxy inverso.
+- **Node.js y Express:** API HTTP del backend.
+- **Docker:** construcción y ejecución de contenedores.
+- **Docker Compose:** configuración y ejecución conjunta de los servicios.
+- **Git y GitHub:** versionamiento del código fuente.
 
-El proyecto se desarrolló progresivamente en tres etapas:
+### Arquitectura
 
-- Entrega 1: diseño y maquetación en Figma.
-- Entrega 2: prototipo funcional con HTML, CSS y JavaScript.
-- Entrega 3: migración e implementación final con Angular y despliegue web.
+El proyecto dispone de dos servicios:
 
-## Estado del proyecto
+| Servicio | Tecnología        | Responsabilidad                                      |
+| -------- | ----------------- | ---------------------------------------------------- |
+| `web`    | Angular + Nginx   | Servir la aplicación y redirigir solicitudes `/api/` |
+| `api`    | Node.js + Express | Proporcionar el endpoint de comprobación de salud    |
 
-Actualmente NexoNews corresponde a la **Entrega 3** y cuenta con una aplicación funcional desarrollada en Angular.
+Docker Compose crea una red interna que permite que Nginx acceda al backend mediante `http://api:3000`.
 
-## Funcionalidades implementadas
-
-- Página principal basada en los mockups realizados en Figma.
-- Navbar y footer implementados como componentes reutilizables.
-- Carga inicial de noticias desde un archivo JSON.
-- Renderizado dinámico de noticias.
-- Listado completo de noticias.
-- Filtros por categoría.
-- Buscador de noticias.
-- Vista de detalle mediante parámetros dinámicos de Angular Router.
-- Sistema de favoritos con persistencia mediante `localStorage`.
-- Persistencia de favoritos después de recargar la aplicación.
-- Formulario de contacto con validaciones mediante Reactive Forms.
-- Inicio de sesión administrativo simulado.
-- Interfaz diferenciada para usuario y administrador.
-- Creación de noticias.
-- Edición de noticias.
-- Eliminación de noticias.
-- Persistencia del CRUD mediante `localStorage`.
-- Protección básica de rutas administrativas mediante Route Guard.
-- Uso de Signals para el manejo reactivo de estado.
-- Diseño responsive.
-- Build de producción generado correctamente con Angular.
-
-## Tecnologías
-
-- Angular
-- TypeScript
-- HTML5
-- CSS3
-- Angular Router
-- Reactive Forms
-- Angular Signals
-- HttpClient
-- RxJS
-- JSON
-- LocalStorage
-- Git
-- GitHub
-- Vercel
-
-## Despliegue
-
-La aplicación se encuentra desplegada en Vercel.
-
-URL pública:
-
-https://nexonews-frontend.vercel.app/
-
-## Arquitectura general
-
-La aplicación está organizada mediante componentes, páginas, servicios, modelos y guards.
+### Estructura de contenedores
 
 ```text
 nexonews/
-│
 ├── angular/
-│   │
-│   ├── public/
-│   │   └── data/
-│   │       └── noticias.json
-│   │
-│   ├── src/
-│   │   │
-│   │   ├── app/
-│   │   │   │
-│   │   │   ├── components/
-│   │   │   │   ├── navbar/
-│   │   │   │   ├── footer/
-│   │   │   │   └── news-card/
-│   │   │   │
-│   │   │   ├── guards/
-│   │   │   │   └── admin-guard.ts
-│   │   │   │
-│   │   │   ├── models/
-│   │   │   │   └── noticia.model.ts
-│   │   │   │
-│   │   │   ├── pages/
-│   │   │   │   ├── home/
-│   │   │   │   ├── noticias/
-│   │   │   │   ├── detalle/
-│   │   │   │   ├── favoritos/
-│   │   │   │   ├── contacto/
-│   │   │   │   ├── admin/
-│   │   │   │   └── noticia-form/
-│   │   │   │
-│   │   │   ├── services/
-│   │   │   │   ├── auth.ts
-│   │   │   │   ├── noticias.ts
-│   │   │   │   └── storage.ts
-│   │   │   │
-│   │   │   ├── app.config.ts
-│   │   │   ├── app.routes.ts
-│   │   │   ├── app.html
-│   │   │   └── app.ts
-│   │   │
-│   │   ├── index.html
-│   │   ├── main.ts
-│   │   └── styles.css
-│   │
-│   ├── angular.json
+│   ├── Dockerfile
+│   ├── .dockerignore
+│   └── nginx.conf
+├── backend/
+│   ├── Dockerfile
+│   ├── .dockerignore
 │   ├── package.json
 │   ├── package-lock.json
-│   ├── tsconfig.json
-│   ├── tsconfig.app.json
-│   └── tsconfig.spec.json
-│
+│   └── server.js
+├── compose.yaml
 └── README.md
 ```
+
+### Ejecución local
+
+**Requisitos:** Docker Desktop con Docker Compose habilitado.
+
+Desde la carpeta raíz del proyecto:
+
+```bash
+docker compose up --build -d
+```
+
+Consultar el estado de los contenedores:
+
+```bash
+docker compose ps
+```
+
+Detener los servicios:
+
+```bash
+docker compose down
+```
+
+### Verificación
+
+**Aplicación frontend:**
+
+`http://localhost:8080`
+
+**Endpoint de salud de la API:**
+
+`http://localhost:8080/api/health`
+
+Respuesta esperada:
+
+```json
+{
+  "status": "ok",
+  "servicio": "nexonews-api"
+}
+```
+
+La prueba del endpoint se realizó desde el navegador a través del puerto publicado por Nginx, demostrando la comunicación HTTP desde el contenedor web hacia el contenedor API.
+
+### Estado de desarrollo
+
+La primera integración con Docker se ha probado localmente.
+
+Actualmente, las noticias siguen cargándose desde el archivo JSON de Angular o desde `localStorage`. El backend Express todavía no implementa los endpoints CRUD de noticias.
+
+### Próximas mejoras
+
+- Integrar PostgreSQL como base de datos persistente.
+- Implementar los endpoints CRUD de noticias en Express.
+- Conectar Angular con la API REST.
+- Incorporar autenticación y autorización en el backend.
+- Agregar pruebas automatizadas y preparar la integración con Jenkins.

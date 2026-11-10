@@ -1,15 +1,17 @@
-const express = require('express');
+const express = require("express");
 
 const app = express();
 const PORT = 3000;
 
-app.get('/api/health', (req, res) => {
+app.use(express.json());
+
+app.get("/api/health", (req, res) => {
   res.json({
-    status: 'ok',
-    servicio: 'nexonews-api',
+    status: "ok",
+    servicio: "nexonews-api",
   });
 });
 
-app.listen(PORT, '0.0.0.0', () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`API escuchando en puerto ${PORT}`);
 });
