@@ -1,6 +1,6 @@
 
 # ETAPA 1: Compilar la aplicación Angular
-FROM node:22-alpine AS build
+FROM node:22.16.0-alpine3.21 AS build
 
 WORKDIR /app
 
@@ -13,7 +13,7 @@ COPY . .
 RUN npm run build
 
 # ETAPA 2: Servir Angular con Nginx
-FROM nginx:alpine
+FROM nginx:1.28.0-alpine3.21
 
 COPY --from=build /app/dist/angular/browser/ /usr/share/nginx/html/
 
