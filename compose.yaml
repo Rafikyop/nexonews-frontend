@@ -5,10 +5,53 @@ services:
     ports:
       - "127.0.0.1:8080:80"
     depends_on:
-      - api
+      api:
+        condition: service_started
+    networks:
+      - nexonews-network
 
   api:
     build:
       context: ./backend
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: ${POSTGRES_DB}
+      DB_USER: ${POSTGRES_USER}
+      DB_PASSWORD: ${POSTGRES_PASSWORD}
     expose:
       - "3000"
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - nexonews-network
+
+  db:
+    image: postgres:17.7-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "127.0.0.1:5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test:
+        ["CMD-SHELL", 'pg_isready -U "$${POSTGRES_USER}" -d "$${POSTGRES_DB}"']
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - nexonews-network
+
+networks:
+  nexonews-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
