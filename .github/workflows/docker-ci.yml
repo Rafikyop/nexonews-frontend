@@ -1,0 +1,87 @@
+name: NexoNews Docker CI
+
+on:
+  push:
+    branches:
+      - feature/docker-ci
+      - main
+  pull_request:
+    branches:
+      - main
+      - feature/docker-ci
+
+permissions:
+  contents: read
+
+jobs:
+  docker-ci:
+    name: Build and integration tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Obtener codigo
+        uses: actions/checkout@v4
+
+      - name: Crear entorno de prueba
+        run: |
+          printf 'POSTGRES_DB=nexonews\n' > .env
+          printf 'POSTGRES_USER=nexonews_app\n' >> .env
+          printf 'POSTGRES_PASSWORD=%s\n' "$(openssl rand -hex 24)" >> .env
+
+      - name: Validar Docker Compose
+        run: docker compose config --quiet
+
+      - name: Construir imagenes
+        run: docker compose build
+
+      - name: Iniciar servicios
+        run: docker compose up -d --wait --wait-timeout 180
+
+      - name: Verificar contenedores
+        run: docker compose ps
+
+      - name: Crear tabla para pruebas
+        run: |
+          docker compose exec -T db sh -c \
+            'psql -v ON_ERROR_STOP=1 -U "$POSTGRES_USER" -d "$POSTGRES_DB"' <<'SQL'
+          CREATE TABLE IF NOT EXISTS noticias (
+            id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+            titulo VARCHAR(200) NOT NULL,
+            descripcion TEXT NOT NULL,
+            categoria VARCHAR(100) NOT NULL,
+            autor VARCHAR(150) NOT NULL,
+            fecha TIMESTAMPTZ NOT NULL DEFAULT NOW()
+          );
+          SQL
+
+      - name: Probar comunicacion con API
+        run: |
+          curl --fail --silent --show-error \
+            --retry 12 --retry-delay 2 --retry-connrefused \
+            http://localhost:8080/api/health
+
+      - name: Crear noticia de prueba
+        run: |
+          curl --fail --silent --show-error \
+            -X POST http://localhost:8080/api/noticias \
+            -H "Content-Type: application/json" \
+            -d '{
+              "titulo": "Prueba CI NexoNews",
+              "descripcion": "Integracion automatizada",
+              "categoria": "Tecnologia",
+              "autor": "GitHub Actions"
+            }'
+
+      - name: Verificar lectura de noticia
+        run: |
+          curl --fail --silent --show-error \
+            http://localhost:8080/api/noticias \
+            | grep -F '"titulo":"Prueba CI NexoNews"'
+
+      - name: Mostrar logs si hay errores
+        if: failure()
+        run: docker compose logs --no-color
+
+      - name: Finalizar servicios
+        if: always()
+        run: docker compose down -v
