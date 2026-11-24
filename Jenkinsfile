@@ -45,17 +45,18 @@ pipeline {
 
                     docker compose ps
 
-                    docker compose exec -T db sh -c \
-                      'psql -v ON_ERROR_STOP=1 -U "$POSTGRES_USER" -d "$POSTGRES_DB"' <<'SQL'
-                    CREATE TABLE IF NOT EXISTS noticias (
+                    docker compose exec -T db psql \
+                    -v ON_ERROR_STOP=1 \
+                    -U "$POSTGRES_USER" \
+                    -d "$POSTGRES_DB" \
+                    -c "CREATE TABLE IF NOT EXISTS noticias (
                         id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
                         titulo VARCHAR(200) NOT NULL,
                         descripcion TEXT NOT NULL,
                         categoria VARCHAR(100) NOT NULL,
                         autor VARCHAR(150) NOT NULL,
                         fecha TIMESTAMPTZ NOT NULL DEFAULT NOW()
-                    );
-                    SQL
+                    );"
 
                     docker compose exec -T api node -e "
                     (async () => {
